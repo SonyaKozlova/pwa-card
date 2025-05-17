@@ -4,10 +4,10 @@ const urlsToCache = [
     '/index.html',
     '/styles.css',
     '/app.js',
-    '/photo.jpg',
-    '/phone-qr.png',
-    '/telegram-qr.png',
-    '/email-qr.png',
+    './photo.jpg',
+    './phone-qr.png',
+    './telegram-qr.png',
+    './email-qr.png',
     '/offline.html'
 ];
 
