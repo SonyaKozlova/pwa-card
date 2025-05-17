@@ -4,22 +4,22 @@ const urlsToCache = [
     '/index.html',
     '/styles.css',
     '/app.js',
-    '/images/photo.jpg',
-    '/images/phone-qr.png',
-    '/images/telegram-qr.png',
-    '/images/email-qr.png',
+    '/photo.jpg',
+    '/phone-qr.png',
+    '/telegram-qr.png',
+    '/email-qr.png',
     '/offline.html'
 ];
 
-// Óñòàíîâêà ñåðâèñ-âîðêåðà
+// Ã“Ã±Ã²Ã Ã­Ã®Ã¢ÃªÃ  Ã±Ã¥Ã°Ã¢Ã¨Ã±-Ã¢Ã®Ã°ÃªÃ¥Ã°Ã 
 self.addEventListener("install", e => {
     e.waitUntil(
         caches.open(CACHE_NAME).then(c => c.addAll(FILES))
     );
-    self.skipWaiting(); // Ñðàçó àêòèâèðîâàòü íîâûé âîðêåð
+    self.skipWaiting(); // Ã‘Ã°Ã Ã§Ã³ Ã ÃªÃ²Ã¨Ã¢Ã¨Ã°Ã®Ã¢Ã Ã²Ã¼ Ã­Ã®Ã¢Ã»Ã© Ã¢Ã®Ã°ÃªÃ¥Ã°
 });
 
-// Àêòèâàöèÿ (î÷èñòêà ñòàðîãî êýøà)
+// Ã€ÃªÃ²Ã¨Ã¢Ã Ã¶Ã¨Ã¿ (Ã®Ã·Ã¨Ã±Ã²ÃªÃ  Ã±Ã²Ã Ã°Ã®Ã£Ã® ÃªÃ½Ã¸Ã )
 self.addEventListener("activate", e => {
     e.waitUntil(
         caches.keys().then(keys =>
@@ -29,11 +29,11 @@ self.addEventListener("activate", e => {
     self.clients.claim();
 });
 
-// Îáðàáîòêà çàïðîñîâ îò ñòðàíèöû
+// ÃŽÃ¡Ã°Ã Ã¡Ã®Ã²ÃªÃ  Ã§Ã Ã¯Ã°Ã®Ã±Ã®Ã¢ Ã®Ã² Ã±Ã²Ã°Ã Ã­Ã¨Ã¶Ã»
 self.addEventListener("fetch", e => {
     e.respondWith(
-        caches.match(e.request) // Ïûòàåìñÿ íàéòè ôàéë â êýøå
-            .then(r => r || fetch(e.request)) // Åñëè íåò — ïðîáóåì çàãðóçèòü èç èíòåðíåòà
-            .catch(() => caches.match("/offline.html")) // Åñëè ñîâñåì íå óäàëîñü — ïîêàçàòü offline.html
+        caches.match(e.request) // ÃÃ»Ã²Ã Ã¥Ã¬Ã±Ã¿ Ã­Ã Ã©Ã²Ã¨ Ã´Ã Ã©Ã« Ã¢ ÃªÃ½Ã¸Ã¥
+            .then(r => r || fetch(e.request)) // Ã…Ã±Ã«Ã¨ Ã­Ã¥Ã² â€” Ã¯Ã°Ã®Ã¡Ã³Ã¥Ã¬ Ã§Ã Ã£Ã°Ã³Ã§Ã¨Ã²Ã¼ Ã¨Ã§ Ã¨Ã­Ã²Ã¥Ã°Ã­Ã¥Ã²Ã 
+            .catch(() => caches.match("/offline.html")) // Ã…Ã±Ã«Ã¨ Ã±Ã®Ã¢Ã±Ã¥Ã¬ Ã­Ã¥ Ã³Ã¤Ã Ã«Ã®Ã±Ã¼ â€” Ã¯Ã®ÃªÃ Ã§Ã Ã²Ã¼ offline.html
     );
 }); 
