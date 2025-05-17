@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Моя визитка</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4a148c">
+</head>
+<body>
+    <div class="card">
+        <img src="images/photo.jpg" alt="Мое фото" class="photo">
+        <h1>Козлова София</h1>
+
+        <div class="contacts">
+            <button onclick="showQr('phone')">Телефон</button>
+            <div id="phone-qr" class="qr-container hidden">
+                <img src="images/phone-qr.png" alt="QR код телефона">
+                <p>+7 (123) 456-78-90</p>
+            </div>
+
+            <button onclick="showQr('telegram')">Telegram</button>
+            <div id="telegram-qr" class="qr-container hidden">
+                <img src="images/telegram-qr.png" alt="QR код Telegram">
+                <p>@mytelegram</p>
+            </div>
+
+            <button onclick="showQr('email')">Email</button>
+            <div id="email-qr" class="qr-container hidden">
+                <img src="images/email-qr.png" alt="QR код Email">
+                <p>my@email.com</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
